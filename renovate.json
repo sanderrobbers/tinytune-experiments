@@ -6,7 +6,7 @@
   "prHourlyLimit": 0,
   "commitMessagePrefix": ":arrow_up:",
   "commitMessageAction": "Bump",
-  "prBodyTemplate": "{{{header}}}## 📝 Overview\n\n**Purpose:**\n\n{{{footer}}}",
+  "prBodyTemplate": "{{{header}}}## 📝 Overview\n\n**Purpose:**\n\n{{{table}}}{{{warnings}}}{{{notes}}}{{{changelogs}}}{{{configDescription}}}{{{controls}}}{{{footer}}}",
   "packageRules": [
     {
       "matchPackageNames": ["*"],
