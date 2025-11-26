@@ -1,6 +1,35 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
+  "schedule": ["* 0-6 * * *"],
+  "extends": ["config:recommended"],
+  "enabledManagers": ["nuget"],
+  "prHourlyLimit": 0,
+  "commitMessagePrefix": ":arrow_up:",
+  "commitMessageAction": "Bump",
+  "prBodyTemplate": "{{{header}}}## 📝 Overview\n\n**Purpose:**\n\n{{{footer}}}",
+  "packageRules": [
+    {
+      "matchPackageNames": ["*"],
+      "commitMessageSuffix": "{{#if isGroup}}with {{upgrades.length}} updates{{/if}}"
+    },
+    {
+      "matchManagers": ["nuget"],
+      "groupName": "nuget/dotnet-framework",
+      "matchPackageNames": ["dotnet-sdk", "Microsoft.{/,}**", "System.{/,}**", "!Microsoft.Orleans.{/,}**"]
+    },
+    {
+      "matchManagers": ["nuget"],
+      "groupName": "nuget/orleans",
+      "matchPackageNames": ["Microsoft.Orleans.{/,}**", "OrleansDashboard{/,}**"]
+    },
+    {
+      "matchManagers": ["nuget"],
+      "groupName": "nuget/tests",
+      "matchPackageNames": ["xunit{/,}**", "NSubstitute", "FluentAssertions"]
+    },
+    {
+      "matchManagers": ["nuget"],
+      "groupName": "nuget/various"
+    }
   ]
 }
