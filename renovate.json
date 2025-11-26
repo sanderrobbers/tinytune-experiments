@@ -10,7 +10,7 @@
   "packageRules": [
     {
       "matchPackageNames": ["*"],
-      "commitMessageSuffix": "{{#if isGroup}}for {{#each (distinct upgrades 'depName')}}{{depName}} from {{currentVersion}} to {{prettyNewVersion}}{{#unless @last}}, {{/unless}}{{/each}}{{/if}}"
+      "commitMessageSuffix": "{{#if isGroup}}for {{#each (distinct upgrades 'depName')}}{{#with (last (filter ../../upgrades 'depName' depName))}}{{depName}} from {{currentVersion}} to {{prettyNewVersion}}{{/with}}{{#unless @last}}, {{/unless}}{{/each}}{{/if}}"
     },
     {
       "matchManagers": ["nuget"],
