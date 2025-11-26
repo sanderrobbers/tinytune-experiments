@@ -10,7 +10,8 @@
   "packageRules": [
     {
       "matchPackageNames": ["*"],
-      "commitMessageSuffix": "{{#if isGroup}}for {{#each (distinct (lookupArray upgrades 'depName'))}}{{{.}}} to {{#with (lookup ../prettyNewVersion [depName])~}}{{#unless @last}}, {{/unless}}{{/each}}{{/if}}",
+      "commitMessageSuffix": "{{#if isGroup}}for {{#each (distinct (lookupArray upgrades 'depName,prettyNewVersion'))}}{{{.}}}{{#unless @last}}, {{/unless}}{{/each}}{{/if}}"
+
     },
     {
       "matchManagers": ["nuget"],
