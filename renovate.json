@@ -10,7 +10,10 @@
   "packageRules": [
     {
       "matchPackageNames": ["*"],
-      "commitMessageSuffix": "{{#if isGroup}}with {{(toArray (distinct (lookupArray upgrades 'depName'))).length}} updates ({{#each (distinct (lookupArray upgrades 'depName'))}}{{.}}{{#unless @last}}, {{/unless}}{{/each}}){{/if}}"
+      "commitMessageSuffix": "{{#if isGroup}}with {{#each (distinct (lookupArray upgrades 'depName'))}}{{#if @last}},@index+1 {{/if}}{{/each}} updates ({{#each (distinct (lookupArray upgrades 'depName'))}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}){{/if}}",
+
+
+
     },
     {
       "matchManagers": ["nuget"],
